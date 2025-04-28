@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Image Display</title>
+</head>
+<body>
+    <h1>Images Based on Conditions</h1>
+    
+    <div id="image-container">
+        <!-- Images will be displayed here -->
+    </div>
+
+    <script>
+        // Conditions and corresponding image URLs
+        const conditions = [
+            { condition: 'if key pressed is 1', imageUrl: 'image1.jpg' },
+            { condition: 'ondition 2', imageUrl: 'image2.jpg' },
+            { condition: 'Condition 3', imageUrl: 'image3.jpg' },
+            { condition: 'Condition 4', imageUrl: 'image4.jpg' },
+            { condition: 'Condition 5', imageUrl: 'image5.jpg' },
+            // Add more conditions and image URLs as needed
+        ];
+
+        // Function to display images based on conditions
+        function displayImages() {
+            const imageContainer = document.getElementById('image-container');
+            imageContainer.innerHTML = ''; // Clear previous images
+
+            // Shuffle the conditions array to randomize image order
+            const shuffledConditions = [...conditions].sort(() => Math.random() - 0.5);
+
+            // Display at least 5 images
+            for (let i = 0; i < Math.max(5, shuffledConditions.length); i++) {
+                const conditionData = shuffledConditions[i];
+                if (conditionData) {
+                    const imageElement = document.createElement('img');
+                    imageElement.src = conditionData.imageUrl;
+                    imageElement.alt = conditionData.condition;
+                    imageContainer.appendChild(imageElement);
+                }
+            }
+        }
+
+        // Call the displayImages function when the page loads
+        window.onload = displayImages;
+    </script>
+</body>
+</html>
